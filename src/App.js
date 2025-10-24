@@ -8,7 +8,6 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import ProtectedRoute from './utils/ProtectedRoute';
 import PublicRoute from './utils/PublicRoute';
-import {AuthProvaider} from './utils/authContext';
 import Lkw from './pages/lkw';
 
 function App() {
