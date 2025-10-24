@@ -1,0 +1,146 @@
+.nav-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  height: 72px;
+  background: var(--surface-color);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--divider-color);
+  box-shadow: var(--box-shadow-lg);
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  letter-spacing: -0.5px;
+}
+
+.nav-brand:hover {
+  color: #1d4ed8;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: var(--transition);
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+  left: 0;
+  opacity: 0.15;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-right .MuiButton-root {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--border-radius) !important;
+  background: var(--surface-color) !important;
+  transition: var(--transition) !important;
+}
+
+.nav-right .MuiButton-root:hover {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+}
+
+.nav-right .MuiIconButton-root {
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  background: var(--surface-color) !important;
+  transition: var(--transition) !important;
+}
+
+.nav-right .MuiIconButton-root:hover {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+}
+
+@media (max-width: 768px) {
+  .nav-toolbar {
+    padding: 0 16px;
+    height: 64px;
+  }
+  
+  .nav-brand {
+    font-size: 1.25rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-right {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-toolbar {
+    padding: 0 12px;
+  }
+  
+  .nav-brand {
+    font-size: 1.1rem;
+  }
+}

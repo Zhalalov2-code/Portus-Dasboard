@@ -1,0 +1,228 @@
+/* Контейнер страницы */
+.fahrer-container {
+    display: flex;
+    gap: 24px;
+    padding: 32px 50px;
+    min-width: 1700px;
+}
+
+/* Боковая панель */
+.fahrer-sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    padding: 28px;
+    height: fit-content;
+    position: sticky;
+    top: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: solid 1px #e2e8f0;
+}
+
+.fahrer-sidebar:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Основной контент */
+.fahrer-content {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.fahrer-content > h4 {
+    color: #1e293b;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Заголовок sidebar */
+.sidebar-title {
+    margin-bottom: 24px !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #1e293b !important;
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Секции фильтров */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Обертка таблицы */
+.fahrer-content > div:last-child {
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.fahrer-content > div:last-child:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Таблица */
+.fahrer-table {
+    width: 100%;
+    table-layout: auto;
+    border: solid 1px #e2e8f0;
+}
+
+/* Ячейки таблицы */
+.fahrer-table th,
+.fahrer-table td {
+    padding: 18px 20px;
+    text-align: left;
+    transition: all 0.2s ease;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 300px;
+    white-space: normal;
+    border: solid 1px #e2e8f0;
+}
+
+/* Заголовки */
+.fahrer-table th {
+    font-weight: 700;
+    background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
+    color: #475569;
+    font-size: 0.85rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Строки таблицы */
+.fahrer-table tbody tr {
+    background-color: white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.fahrer-table tbody tr:nth-of-type(even) {
+    background-color: #fafbfc;
+}
+
+.fahrer-table tbody tr:hover {
+    background: linear-gradient(to right, #eff6ff 0%, #dbeafe 100%);
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 0 #3b82f6;
+}
+
+.fahrer-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Кнопки действий */
+.fahrer-table tbody tr .MuiIconButton-root {
+    transition: all 0.2s ease;
+}
+
+.fahrer-table tbody tr .MuiIconButton-root:hover {
+    transform: scale(1.15);
+}
+
+/* Горизонтальная прокрутка */
+.fahrer-content > div:last-child {
+    overflow-x: auto;
+}
+
+.fahrer-content > div:last-child::-webkit-scrollbar {
+    height: 8px;
+}
+
+.fahrer-content > div:last-child::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.fahrer-content > div:last-child::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.fahrer-content > div:last-child::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Стилизация кнопки добавления */
+.filter-section .MuiButton-contained {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.filter-section .MuiButton-contained:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Текстовые поля */
+.filter-section .MuiTextField-root {
+    transition: all 0.3s ease;
+}
+
+.filter-section .MuiOutlinedInput-root:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .fahrer-container {
+        padding: 24px 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .fahrer-container {
+        flex-direction: column;
+        padding: 20px;
+        background: white;
+    }
+
+    .fahrer-sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .fahrer-table th,
+    .fahrer-table td {
+        padding: 12px 10px;
+        font-size: 0.875rem;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .fahrer-container {
+        padding: 16px;
+    }
+
+    .fahrer-table th,
+    .fahrer-table td {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+        max-width: 120px;
+    }
+
+    .sidebar-title {
+        font-size: 1rem !important;
+    }
+}
