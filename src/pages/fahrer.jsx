@@ -26,7 +26,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import '../css/fahrer.css';
 
 function FahrerPage() {
-    const API_URL = '/portusApp1/fahrer';
+    const API_URL = 'http://localhost/portusApp1/fahrer';
     const [drivers, setDrivers] = useState([]);
     const [search, setSearch] = useState('');
     const [open, setOpen] = useState(false);

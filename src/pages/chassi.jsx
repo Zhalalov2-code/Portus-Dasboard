@@ -15,7 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import '../css/chassi.css';
 import axios from 'axios';
 
-const API_URL = '/portusApp1/chassi';
+const API_URL = 'http://localhost/portusApp1/chassi';
 
 // === Расчёт дней до даты ===
 function daysLeft(dateStr) {
