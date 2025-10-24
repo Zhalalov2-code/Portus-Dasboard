@@ -57,6 +57,12 @@ function Lkw() {
 
   useEffect(() => {
     getLkws();
+
+    const interval = setInterval(() => {
+      getLkws();
+    }, 10 * 60 * 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleDelete = async (idMaybe) => {
@@ -332,8 +338,8 @@ function Lkw() {
                   <TableCell><b>Номер грузовика</b></TableCell>
                   <TableCell><b>TÜF</b></TableCell>
                   <TableCell><b>Статус TÜF</b></TableCell>
-                  <TableCell><b>ESP</b></TableCell>
-                  <TableCell><b>Статус ESP</b></TableCell>
+                  <TableCell><b>SP</b></TableCell>
+                  <TableCell><b>Статус SP</b></TableCell>
                   <TableCell><b>Статус</b></TableCell>
                   <TableCell align="center"><b>Действия</b></TableCell>
                 </TableRow>
@@ -358,7 +364,7 @@ function Lkw() {
                       {/* Дата ESP */}
                       <TableCell>{formatDate(lkw.esp)}</TableCell>
                       {/* Статус ESP */}
-                      <TableCell>{getDueChip(lkw.esp, 'ESP')}</TableCell>
+                      <TableCell>{getDueChip(lkw.esp, 'SP')}</TableCell>
 
                       <TableCell>
                         <Typography

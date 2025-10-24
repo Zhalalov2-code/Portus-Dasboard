@@ -32,7 +32,6 @@ function daysLeft(dateStr) {
 // === Статус на основе ESP ===
 function calculateStatus(espDate) {
   const dLeft = daysLeft(espDate);
-  if (dLeft === null) return 'Beschädigt';
   if (dLeft < 0) return 'Просрочено';
   if (dLeft <= 7) return 'Скоро Тех. Осмотр';
   return 'В порядке';
@@ -143,6 +142,12 @@ function ChassiPage() {
 
   useEffect(() => {
     getChassi();
+
+    const interval = setInterval(() => {
+      getChassi();
+    }, 10 * 60 * 1000);
+
+    return () => clearInterval(interval);
   }, [getChassi]);
 
   // === Сохранение ===
@@ -303,8 +308,8 @@ function ChassiPage() {
             fullWidth
             size="small"
           >
-            <MenuItem value="esp_asc">ESP ↑ ближайшие</MenuItem>
-            <MenuItem value="esp_desc">ESP ↓ дальние</MenuItem>
+            <MenuItem value="esp_asc">SP ↑ ближайшие</MenuItem>
+            <MenuItem value="esp_desc">SP ↓ дальние</MenuItem>
             <MenuItem value="number_asc">Номер ↑</MenuItem>
             <MenuItem value="number_desc">Номер ↓</MenuItem>
           </TextField>
@@ -325,8 +330,8 @@ function ChassiPage() {
                   <TableCell><b>Номер шасси</b></TableCell>
                   <TableCell><b>TÜF</b></TableCell>
                   <TableCell><b>Статус TÜF</b></TableCell>
-                  <TableCell><b>ESP</b></TableCell>
-                  <TableCell><b>Статус ESP</b></TableCell>
+                  <TableCell><b>SP</b></TableCell>
+                  <TableCell><b>Статус SP</b></TableCell>
                   <TableCell><b>Статус</b></TableCell>
                   <TableCell align="center"><b>Действия</b></TableCell>
                 </TableRow>
@@ -351,7 +356,7 @@ function ChassiPage() {
                       <TableCell>{formatDate(row.esp)}</TableCell>
                       <TableCell>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-                          {getDueChip(row.esp, 'ESP')}
+                          {getDueChip(row.esp, 'SP')}
                         </Box>
                       </TableCell>
 
