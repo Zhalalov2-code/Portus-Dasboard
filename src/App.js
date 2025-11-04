@@ -8,7 +8,6 @@ import Lkw from './pages/lkw';
 import Chassi from './pages/chassi';
 import Chat from './pages/chat';
 import Navbar from './components/navbar';
-import Footer from './components/footer';
 import ProtectedRoute from './utils/ProtectedRoute';
 import PublicRoute from './utils/PublicRoute';
 import FahrerPage from './pages/fahrer';
