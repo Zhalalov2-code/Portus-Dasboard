@@ -8,8 +8,8 @@
 
 /* Боковая панель */
 .chassi-sidebar {
-    width: 280px;
-    min-width: 280px;
+    width: 380px;
+    min-width: 380px;
     background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
     border-radius: 16px;
     padding: 28px;
@@ -19,12 +19,7 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: solid 1px #e2e8f0;
-}
-
-.chassi-sidebar:hover {
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
-}
+}   
 
 /* Основной контент */
 .chassi-content {
@@ -104,32 +99,32 @@
 }
 
 /* Строки таблицы */
-.chassi-table tbody tr {
+.chassi-table .MuiTableRow-root {
     background-color: white;
     transition: all 0.2s ease;
-    cursor: pointer;
+    text-decoration: none;
 }
 
-.chassi-table tbody tr:nth-of-type(even) {
+.chassi-table .MuiTableRow-root:nth-of-type(even) {
     background-color: #fafbfc;
 }
 
-.chassi-table tbody tr:hover {
+.chassi-table .MuiTableRow-root:hover {
     background: linear-gradient(to right, #eff6ff 0%, #dbeafe 100%);
-    transform: translateX(4px);
+
     box-shadow: -4px 0 0 0 #3b82f6;
 }
 
-.chassi-table tbody tr:last-child td {
+.chassi-table .MuiTableRow-root:last-child .MuiTableCell-root {
     border-bottom: none;
 }
 
 /* Кнопки действий */
-.chassi-table tbody tr .MuiIconButton-root {
+.chassi-table .MuiTableRow-root .MuiIconButton-root {
     transition: all 0.2s ease;
 }
 
-.chassi-table tbody tr .MuiIconButton-root:hover {
+.chassi-table .MuiTableRow-root .MuiIconButton-root:hover {
     transform: scale(1.15);
 }
 

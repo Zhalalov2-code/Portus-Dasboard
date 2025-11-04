@@ -1,0 +1,380 @@
+:root {
+    --primary-color: #1976d2;
+    --primary-light: #e3f2fd;
+    --secondary-color: #dc004e;
+    --background-color: #f5f5f5;
+    --paper-color: #ffffff;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --border-color: #e0e0e0;
+    --shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    --shadow-hover: 0px 4px 8px rgba(0,0,0,0.15);
+}
+
+.back-button {
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-container {
+    padding: 24px;
+    min-height: 100vh;
+}
+
+.chat-container .chat-header {
+    background-color: #ffffff;
+    color: #212121;
+    padding: 20px 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-container .chat-paper {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-container .message-content {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.chat-container .message-content:hover {
+    border-color: #bdbdbd;
+}
+
+.chat-container .sender-chip {
+    font-weight: 500;
+    background-color: #f5f5f5;
+    color: #212121;
+    border: 1px solid #e0e0e0;
+    font-size: 15px !important;
+}
+
+.chat-container .file-preview {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.chat-container .file-preview:hover {
+    border-color: #bdbdbd;
+}
+
+/* Скрытие navbar и footer только на чат-странице */
+body:has(.chat-container) nav,
+body:has(.chat-container) footer,
+body:has(.chat-container) .navbar,
+body:has(.chat-container) .footer {
+    display: none !important;
+}
+
+/* Контейнер чата */
+.chat-container {
+    padding: 24px;
+    min-height: 100vh;
+}
+
+/* Заголовок чата - простой стиль */
+.chat-header {
+    background-color: var(--paper-color);
+    color: var(--text-primary);
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header .header-avatar {
+    background-color: #f5f5f5;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.chat-header .header-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.chat-header .header-status {
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.chat-header .header-menu {
+    color: var(--text-secondary);
+}
+
+.chat-header .header-menu:hover {
+    color: var(--text-primary);
+    background-color: #f5f5f5;
+}
+
+/* Paper для чата */
+.chat-paper {
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Область сообщений */
+.messages-area {
+    background-color: #fafafa;
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.messages-stack {
+    gap: 16px;
+}
+
+/* Контейнер сообщения */
+.message-container {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Bubble сообщения */
+.message-bubble {
+    margin-bottom: 8px;
+}
+
+/* Контент сообщения */
+.message-content {
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.message-content:hover {
+    border-color: var(--border-hover);
+}
+
+/* Заголовок сообщения */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Время сообщения */
+.message-time {
+    color: var(--text-secondary);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+}
+
+/* Текст сообщения */
+.message-text {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Файлы сообщений */
+.message-files {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.file-preview {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.file-preview:hover {
+    border-color: var(--border-hover);
+}
+
+.file-preview img {
+    display: block;
+    border-radius: 7px;
+}
+
+.file-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: var(--text-secondary);
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+/* Скроллбар - простой стиль */
+.messages-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.messages-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-hover);
+    border-radius: 4px;
+}
+
+.messages-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Анимации - простые */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading состояние */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--paper-color);
+}
+
+/* Пустое состояние */
+.empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--paper-color);
+}
+
+/* Разделитель дат */
+.date-divider {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.date-chip {
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 16px;
+    }
+    
+    .messages-area {
+        padding: 12px;
+        max-height: 60vh;
+    }
+    
+    .message-content {
+        padding: 12px;
+    }
+    
+    .message-files {
+        gap: 8px;
+    }
+    
+    .file-preview img {
+        max-width: 150px;
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        padding: 8px;
+    }
+    
+    .chat-header {
+        padding: 16px;
+    }
+    
+    .messages-area {
+        padding: 8px;
+    }
+    
+    .message-content {
+        padding: 8px;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .file-preview img {
+        max-width: 120px;
+        max-height: 80px;
+    }
+}
+
+/* Простые утилитарные классы */
+.system-border {
+    border: 1px solid var(--border-color);
+}
+
+.system-background {
+    background-color: var(--background-color);
+}
+
+.system-paper {
+    background-color: var(--paper-color);
+}
+
+/* Состояния активности */
+.active-status {
+    color: #4caf50;
+}
+
+.inactive-status {
+    color: var(--text-secondary);
+}

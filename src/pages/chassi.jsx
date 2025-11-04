@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom'; // Оставляем только useNavigate
 import {
   Container, Typography, Table, TableHead, TableRow,
   TableCell, TableBody, Paper, IconButton, TextField, MenuItem, Box,
@@ -48,6 +49,8 @@ function ChassiPage() {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [deleteDialog, setDeleteDialog] = useState({ open: false, id: null, chassiNummer: '' });
+
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     setEditChassi(null);
@@ -251,6 +254,14 @@ function ChassiPage() {
     return filtered;
   }, [chassi, search, statusFilter, sortOption]);
 
+  // === Переход в чат ===
+  const handleChatClick = (chassi) => {
+    const chassiId = chassi.id_chassi || chassi._id || chassi.id;
+    if (chassiId) {
+      navigate(`/chat/${chassiId}`);
+    }
+  };
+
   return (
     <Container className="chassi-container">
       {error && (
@@ -345,7 +356,11 @@ function ChassiPage() {
                   </TableRow>
                 ) : (
                   filteredAndSortedChassi.map((row) => (
-                    <TableRow key={row.id_chassi || row._id || row.id}>
+                    <TableRow 
+                      key={row.id_chassi || row._id || row.id}
+                      onClick={() => handleChatClick(row)} // Обычный onClick вместо Link
+                      style={{ cursor: 'pointer' }}
+                    >
                       <TableCell>{row.chassi_nummer || '—'}</TableCell>
 
                       {/* TÜF + статус */}
@@ -360,7 +375,7 @@ function ChassiPage() {
                         </Box>
                       </TableCell>
 
-                      {/* Общий статус (дублируем текстом, если хочешь — можно убрать этот столбец) */}
+                      {/* Общий статус */}
                       <TableCell>
                         <Typography sx={{ color: getStatusColor(row.status), fontWeight: 'bold' }}>
                           {'-'}
@@ -368,18 +383,26 @@ function ChassiPage() {
                       </TableCell>
 
                       <TableCell align="center">
-                        <IconButton color="primary" onClick={() => handleEdit(row)} disabled={loading}>
+                        <IconButton 
+                          color="primary" 
+                          onClick={(e) => {
+                            e.stopPropagation(); // Останавливаем всплытие события
+                            handleEdit(row);
+                          }} 
+                          disabled={loading}
+                        >
                           <EditIcon />
                         </IconButton>
                         <IconButton
                           color="error"
-                          onClick={() =>
+                          onClick={(e) => {
+                            e.stopPropagation(); // Останавливаем всплытие события
                             setDeleteDialog({
                               open: true,
                               id: row.id_chassi || row._id || row.id,
                               chassiNummer: row.chassi_nummer || ''
-                            })
-                          }
+                            });
+                          }}
                           disabled={loading}
                         >
                           <DeleteIcon />
