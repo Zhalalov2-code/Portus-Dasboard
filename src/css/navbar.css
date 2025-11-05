@@ -1,63 +1,143 @@
-.nav-toolbar {
+/**
+ * Стили для боковой навигации с плавными анимациями
+ */
+
+/* Основной контейнер боковой панели */
+.side-navbar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1200;
+  transition: width 0.3s ease-in-out; /* Плавная анимация ширины */
+}
+
+.side-navbar.collapsed {
+  width: 72px;
+}
+
+.side-navbar.expanded {
+  width: 280px;
+}
+
+/* Заголовок панели */
+.side-navbar-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
-  height: 72px;
+  justify-content: space-between;
+  padding: 16px;
+  min-height: 72px;
   background: var(--surface-color);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--divider-color);
-  box-shadow: var(--box-shadow-lg);
   position: relative;
-  transition: var(--transition);
+  transition: all 0.3s ease-in-out; /* Плавная анимация всех свойств */
+  overflow: hidden; /* Скрываем переполнение при сворачивании */
 }
 
-/* .nav-toolbar::before {
+.side-navbar-header::before {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 2px;
   background: var(--primary-color);
-} */
-
-.nav-left {
-  display: flex;
-  align-items: center;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
 }
 
+/* Логотип */
 .nav-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: var(--transition);
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--primary-color) !important;
   letter-spacing: -0.5px;
+  transition: all 0.3s ease-in-out; /* Плавное появление/исчезновение */
+  white-space: nowrap; /* Предотвращаем перенос строки */
+  overflow: hidden;
+  opacity: 1;
 }
 
 .nav-brand:hover {
-  color: #1d4ed8;
+  color: #1d4ed8 !important;
+  transform: translateX(2px); /* Небольшое смещение при наведении */
 }
 
-.nav-links {
+.collapse-btn {
+  color: var(--primary-color) !important;
+  transition: all 0.3s ease-in-out !important;
+  border-radius: 50% !important;
+  padding: 8px !important;
+}
+
+.collapse-btn:hover {
+  background: var(--primary-color) !important;
+  color: white !important;
+  transform: scale(1.1); /* Увеличение при наведении */
+}
+
+/* Секция пользователя */
+.side-navbar-user {
+  padding: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.nav-links a {
-  font-weight: 500;
-  color: var(--text-color-secondary);
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: var(--border-radius-sm);
-  transition: var(--transition);
-  position: relative;
+  gap: 12px;
+  background: var(--surface-color);
+  transition: all 0.3s ease-in-out;
   overflow: hidden;
 }
 
-.nav-links a::before {
+.side-navbar-user.collapsed {
+  justify-content: center;
+  padding: 12px;
+}
+
+/* Информация о пользователе */
+.user-info {
+  flex-grow: 1;
+  min-width: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.user-name {
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  color: var(--text-color) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 !important;
+  transition: color 0.3s ease;
+}
+
+.user-role {
+  font-size: 0.75rem !important;
+  color: var(--text-color-secondary) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 !important;
+  transition: color 0.3s ease;
+}
+
+/* Навигационные элементы */
+.side-navbar-nav {
+  flex-grow: 1;
+  padding: 8px 0 !important;
+}
+
+.nav-item {
+  margin: 2px 8px;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.3s ease-in-out; /* Плавная анимация всех свойств */
+  position: relative;
+  overflow: hidden;
+  color: var(--text-color-secondary) !important;
+  text-decoration: none !important;
+}
+
+.nav-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -65,82 +145,218 @@
   width: 100%;
   height: 100%;
   background: var(--primary-color);
-  transition: var(--transition);
+  transition: all 0.3s ease-in-out; /* Плавная анимация фона */
   z-index: -1;
   opacity: 0.1;
 }
 
-.nav-links a:hover::before,
-.nav-links a.active::before {
+.nav-item:hover::before,
+.nav-item.active::before {
   left: 0;
   opacity: 0.15;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--primary-color);
+.nav-item:hover,
+.nav-item.active {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+  transform: translateX(4px); /* Небольшое смещение при наведении */
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+  color: var(--primary-color) !important;
+  transform: scale(1.1); /* Увеличение иконки */
 }
 
-.nav-right .MuiButton-root {
-  color: var(--text-color) !important;
+/* Иконки навигации */
+.nav-icon {
+  min-width: 40px !important;
+  color: var(--text-color-secondary) !important;
+  display: flex !important;
+  justify-content: center !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Текст навигации */
+.nav-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.nav-text .MuiTypography-root {
   font-weight: 500 !important;
-  padding: 8px 16px !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: var(--border-radius) !important;
+  color: inherit !important;
+  transition: color 0.3s ease;
+}
+
+/* Нижняя панель */
+.side-navbar-footer {
+  padding: 8px 0 !important;
+}
+
+.footer-item {
+  margin: 2px 8px;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-item.logout {
+  color: #d32f2f !important;
+}
+
+.footer-item.logout:hover {
+  background-color: rgba(211, 47, 47, 0.08) !important;
+  color: #d32f2f !important;
+  transform: translateX(4px); /* Смещение при наведении */
+}
+
+.footer-item.logout .nav-icon {
+  color: #d32f2f !important;
+}
+
+.footer-item.logout:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+/* Версия приложения */
+.app-version {
+  padding: 16px;
+  text-align: center;
+  border-top: 1px solid var(--divider-color);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.app-version .MuiTypography-root {
+  color: var(--text-color-secondary) !important;
+  font-size: 0.75rem !important;
+}
+
+/* Плавная анимация для всех элементов */
+.nav-item,
+.footer-item,
+.collapse-btn,
+.user-info,
+.nav-brand {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Скрытие скроллбара с анимацией */
+.side-navbar .MuiDrawer-paper::-webkit-scrollbar {
+  width: 4px;
+  transition: width 0.3s ease;
+}
+
+.side-navbar .MuiDrawer-paper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-navbar .MuiDrawer-paper::-webkit-scrollbar-thumb {
+  background: var(--divider-color);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.side-navbar .MuiDrawer-paper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Улучшенные тултипы */
+.MuiTooltip-tooltip {
   background: var(--surface-color) !important;
-  transition: var(--transition) !important;
-}
-
-.nav-right .MuiButton-root:hover {
-  background: var(--primary-color) !important;
-  color: white !important;
-  border-color: var(--primary-color) !important;
-}
-
-.nav-right .MuiIconButton-root {
   color: var(--text-color) !important;
-  border: 1px solid var(--border-color) !important;
-  background: var(--surface-color) !important;
-  transition: var(--transition) !important;
+  border: 1px solid var(--divider-color) !important;
+  box-shadow: var(--box-shadow-lg) !important;
+  font-size: 0.875rem !important;
+  animation: tooltipFadeIn 0.2s ease-in-out;
 }
 
-.nav-right .MuiIconButton-root:hover {
-  background: var(--primary-color) !important;
-  color: white !important;
-  border-color: var(--primary-color) !important;
+@keyframes tooltipFadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
 }
 
+/* Респонсивность с плавными анимациями */
 @media (max-width: 768px) {
-  .nav-toolbar {
-    padding: 0 16px;
-    height: 64px;
+  .side-navbar {
+    width: 280px !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .side-navbar.mobile-open {
+    transform: translateX(0);
   }
   
   .nav-brand {
-    font-size: 1.25rem;
-  }
-  
-  .nav-links {
-    display: none;
-  }
-  
-  .nav-right {
-    gap: 8px;
+    font-size: 1.1rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .nav-toolbar {
-    padding: 0 12px;
+  .nav-brand {
+    font-size: 1rem !important;
   }
   
-  .nav-brand {
-    font-size: 1.1rem;
+  .side-navbar-header {
+    padding: 12px;
+    min-height: 64px;
   }
+}
+
+/* Темная тема с анимациями */
+@media (prefers-color-scheme: dark) {
+  .side-navbar-header {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .side-navbar-user {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .user-role {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  .nav-icon {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  .nav-item:hover {
+    background-color: rgba(144, 202, 249, 0.08) !important;
+  }
+  
+  .app-version {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .app-version .MuiTypography-root {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+}
+
+/* Переопределение стилей NavLink */
+.nav-item.active {
+  background-color: transparent !important;
+}
+
+.nav-item a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Дополнительные стили для плавности */
+* {
+  box-sizing: border-box;
+}
+
+.side-navbar * {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
